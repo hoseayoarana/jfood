@@ -1,14 +1,16 @@
 
 /**
- * Write a description of class JFood here.
+ * Class JFood berisi objek dari seluruh class yang ada dalam project
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Hosea Yoarana
+ * @version 27-02-2020
  */
 public class JFood
 {
-        /**
-     * Constructor for objects of class JFood
+    /**
+     * Inisiasi variabel kedalam method public untuk datatype JFood
+     * @param String[] args     mengambil argumen sebelumnya
+     * @return Nothing.         mengembalikan Nothing
      */
     public static void main(String[] args)
     {
@@ -19,11 +21,4 @@ public class JFood
         Invoice invoice1 = new Invoice(1, 100, "27/02/2020", customer1, 10000);
         System.out.println(allalayam.getName());
     }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
 }

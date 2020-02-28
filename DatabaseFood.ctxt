@@ -1,13 +1,19 @@
 #BlueJ class context
 comment0.target=DatabaseFood
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ DatabaseFood\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Class\ DatabaseFood\ berisi\ listFood\r\n\r\n\ @author\ Hosea\ Yoarana\r\n\ @version\ 27-02-2020\r\n
 comment1.params=
 comment1.target=DatabaseFood()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ DatabaseFood\r\n
+comment1.text=\r\n\ Inisiasi\ variabel\ kedalam\ method\ public\ untuk\ datatype\ DatabaseFood\r\n
 comment2.params=food
 comment2.target=boolean\ addFood(Food)
+comment2.text=\r\n\ method\ addFood\ untuk\ menambahkan\ food\r\n\ @param\ food\ \ \ \ \ \ food\ dari\ DatabaseFood\r\n\ @return\ true\ \ \ \ \ mengembalikan\ true\r\n
 comment3.params=food
 comment3.target=boolean\ removeFood(Food)
+comment3.text=\r\n\ method\ removeFood\ untuk\ menghilangkan\ food\r\n\ @param\ food\ \ \ \ \ \ food\ dari\ DatabaseFood\r\n\ @return\ true\ \ \ \ \ mengembalikan\ true\r\n
 comment4.params=
-comment4.target=java.lang.String[]\ getListFood()
-numComments=5
+comment4.target=Food\ getFood()
+comment4.text=\r\n\ method\ getFood\ untuk\ mengambil\ food\r\n\ @return\ null\ \ \ \ \ mengembalikan\ null\r\n
+comment5.params=
+comment5.target=java.lang.String[]\ getListFood()
+comment5.text=\r\n\ accessor\ getListFood\ untuk\ memanggil\ listFood\r\n\ @return\ listFood\ \ \ \ \ mengembalikan\ listFood\r\n
+numComments=6
