@@ -8,7 +8,7 @@
 public class DatabaseFood
 {
     // bagian ini berisi variabel yang nantinya digunakan sebagai parameter objek
-    private String[] listFood;      //string dari listFood
+    private static String[] listFood;      //string dari listFood
 
     /**
      * Inisiasi variabel kedalam method public untuk datatype DatabaseFood
@@ -23,7 +23,7 @@ public class DatabaseFood
      * @param food      food dari DatabaseFood
      * @return true     mengembalikan true
      */
-    public boolean addFood(Food food)
+    public static boolean addFood(Food food)
     {
         return true;
     }
@@ -33,7 +33,7 @@ public class DatabaseFood
      * @param food      food dari DatabaseFood
      * @return true     mengembalikan true
      */
-    public boolean removeFood(Food food)
+    public static boolean removeFood(Food food)
     {
         return true;
     }
@@ -42,7 +42,7 @@ public class DatabaseFood
      * method getFood untuk mengambil food
      * @return null     mengembalikan null
      */
-    public Food getFood()
+    public static Food getFood()
     {
         return null;
     }
@@ -51,7 +51,7 @@ public class DatabaseFood
      * accessor getListFood untuk memanggil listFood
      * @return listFood     mengembalikan listFood
      */
-    public String[] getListFood()
+    public static String[] getListFood()
     {
         return listFood;
     }

@@ -1,19 +1,19 @@
 
 /**
- * Write a description of class DatabaseSeller here.
+ * Write a description of class DatabaseCustomer here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class DatabaseSeller
+public class DatabaseCustomer
 {
     // instance variables - replace the example below with your own
-    private static String[] listSeller;
+    private static String[] listCustomer;
 
     /**
-     * Constructor for objects of class DatabaseSeller
+     * Constructor for objects of class DatabaseCustomer
      */
-    public DatabaseSeller()
+    public DatabaseCustomer()
     {
         // initialise instance variables
         
@@ -25,25 +25,25 @@ public class DatabaseSeller
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static boolean addSeller(Seller seller)
+    public static boolean addCustomer(Customer customer)
     {
         // put your code here
         return true;
     }
     
-    public static boolean removeSeller(Seller seller)
+    public static boolean removeCustomer(Customer customer)
     {
         return true;
     }
     
-    public static Seller getSeller()
+    public static Customer getCustomer()
     {
         return null;
-    }   
+    }
     
-    public static String[] getListSeller()
+    public static String[] getListCustomer()
     {
-        return listSeller;
+        return listCustomer;
     }
     
 }

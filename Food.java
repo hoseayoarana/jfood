@@ -12,8 +12,8 @@ public class Food
     private String name;        // name dari food
     private Seller seller;      // seller dari food
     private int price;          // price dari food
-    private String category;    // category dari food
-
+    private FoodCategory category;    // category dari food
+    
     /**
      * Inisiasi variabel kedalam method public untuk datatype Food
      * @param id            id dari food
@@ -22,7 +22,7 @@ public class Food
      * @param price         price dari food
      * @param category      category dari food
      */
-    public Food(int id, String name, Seller seller, int price, String category)
+    public Food(int id, String name, Seller seller, int price, FoodCategory category)
     {
         this.id = id;
         this.name = name;
@@ -71,7 +71,7 @@ public class Food
      * accessor getCategory untuk mengambil category
      * @return category     mengembalikan category
      */
-    public String getCategory()
+    public FoodCategory getCategory()
     {
         return category;
     }
@@ -116,7 +116,7 @@ public class Food
      * mutator setCategory untuk menetapkan category
      * @param category      category dari food
      */
-    public void setCategory(String category)
+    public void setCategory(FoodCategory category)
     {
         this.category = category;   
     }
@@ -127,7 +127,13 @@ public class Food
      */
     public void printData()
     {
-        System.out.println(getName());
+        System.out.println("===========Food===========");
+        System.out.println("ID : "+id);
+        System.out.println("Name : "+name);
+        System.out.println("Seller : "+seller.getName());
+        System.out.println("City : "+seller.getLocation().getCity());
+        System.out.println("Price : "+price);
+        System.out.println("Category : "+category);
     }
     
 }

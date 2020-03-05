@@ -71,7 +71,7 @@ public class Seller
      * method location untuk mengembalikan location
      * @return location     mengembalikan location
      */
-    public Location location()
+    public Location getLocation()
     {
         return location;
     }
