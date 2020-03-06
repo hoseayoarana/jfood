@@ -18,8 +18,9 @@ public class JFood
         Seller seller1 = new Seller(1, "HoseaYoarana", "hosea.yoarana@gmail.com", "081212343199", location1);
         Food ayam = new Food(1, "Ayam", seller1, 10000, FoodCategory.BEVERAGES);
         Customer customer1 = new Customer(1, "Jamal", "jamal@gmail.com", "123456", "27/02/2020");
-        Invoice invoice1 = new Invoice(1, 100, "27/02/2020", customer1, 10000);
-        ayam.printData();
+        Invoice invoice1 = new Invoice(1, ayam.getId(), "27/02/2020", customer1, 10000, InvoiceStatus.FINISHED);
+        //ayam.printData();
+        invoice1.printData();
         //System.out.println(seller1.getName());
         //seller1.setName("Fathur");
         //System.out.println(seller1.getName());
