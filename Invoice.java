@@ -5,16 +5,16 @@
  * @author Hosea Yoarana
  * @version 27-02-2020
  */
-public class Invoice
+public abstract class Invoice
 {
     // bagian ini berisi variabel yang nantinya digunakan sebagai parameter objek
     private int id;                 // id dari invoice
-    private int idFood;             // idFood dari invoice
+    private Food food;             // idFood dari invoice
     private String date;            // tanggal dari invoice
-    private int totalPrice;         // totalPrice dari invoice
+    protected int totalPrice;         // totalPrice dari invoice
     private Customer customer;      // data customer
     private PaymentType paymentType;
-    private InvoiceStatus status;
+    private InvoiceStatus invoiceStatus;
 
     /**
      * Inisiasi variabel kedalam method public untuk datatype Invoice
@@ -24,14 +24,13 @@ public class Invoice
      * @param customer      data customer
      * @param totalPrice    totalPrice dari customer
      */
-    public Invoice(int id, int idFood, String date, Customer customer, int totalPrice, InvoiceStatus status)
+    public Invoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
     {
         this.id = id;
-        this.idFood = idFood;
+        this.food = food;
         this.date = date;
         this.customer = customer;
-        this.totalPrice = totalPrice;
-        this.status = status;
+        this.invoiceStatus = invoiceStatus;
     }
 
     /**
@@ -47,9 +46,9 @@ public class Invoice
      * accessor getIdFood untuk mengambil idFood
      * @return idFood       mengembalikan idFood
      */
-    public int getIdFood()
+    public Food getFood()
     {
-        return idFood;
+        return food;
     }
     
     /**
@@ -65,7 +64,7 @@ public class Invoice
      * accessor getTotalPrice untuk mengambil totalPrice
      * @return totalPrice     mengembalikan totalPrice
      */
-    public int getTotalPrice()
+    protected int getTotalPrice()
     {
         return totalPrice;   
     }
@@ -79,14 +78,11 @@ public class Invoice
         return customer;
     }
     
-    public PaymentType getPaymentType()
-    {
-        return paymentType;
-    }
+    public abstract PaymentType getPaymentType();
     
     public InvoiceStatus getInvoiceStatus()
     {
-        return status;
+        return invoiceStatus;
     }
     
     /**
@@ -104,7 +100,7 @@ public class Invoice
      */
     public void setIdFoods(int idFood)
     {
-        this.idFood = idFood;
+        this.food = food;
     }
     
     /**
@@ -120,10 +116,7 @@ public class Invoice
      * mutator setTotalPrice untuk menetapkan totalProce
      * @param totalPrice        totalPrice dari invoice
      */
-    public void setTotalPrice(int totalPrice)
-    {
-        this.totalPrice = totalPrice;
-    }
+    public abstract void setTotalPrice();
     
     /**
      * mutator setCustomer untuk menetapkan customer
@@ -134,29 +127,30 @@ public class Invoice
         this.customer = customer;
     }
     
-    public void setPaymentType(PaymentType paymentType)
+    /*public void setPaymentType(PaymentType paymentType)
     {
         this.paymentType = paymentType;
     }
-    
+    */
     public void setInvoiceStatus(InvoiceStatus invoiceStatus)
     
     {
-        this.status = status;
+        this.invoiceStatus = invoiceStatus;
     }
     
     /**
      * mutator printData untuk menampilkan getTotalPrice()
      * @return Nothing.        mengembalikan Nothing
      */
-    public void printData()
-    {
+    public abstract void printData();
+    /*{
         System.out.println("===========Invoice===========");
         System.out.println("ID : "+id);
-        System.out.println("Food ID : "+idFood);
+        System.out.println("Food ID : "+food);
         System.out.println("Date : "+date);
         System.out.println("Customer : "+customer.getName());
         System.out.println("Total Price : "+totalPrice);
-        System.out.println("Status : "+status);
+        System.out.println("Status : "+invoiceStatus);
     }
+    */
 }
