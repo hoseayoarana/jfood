@@ -20,17 +20,27 @@ public class JFood
         Food sapi = new Food (15, "Cowfee" , seller1, 15000, FoodCategory.COFFEE);
         Customer customer1 = new Customer(1, "Jamal", "jamal@gmail.com", "123456", "27/02/2020");
         Promo promo1 = new Promo(1, "Gagah", 5000, 10000, true);
+        int deliveryFee1 = 5000;
         CashlessInvoice cashless1 = new CashlessInvoice(1, ayam, "3/12/2020", customer1, InvoiceStatus.ONGOING);
+        CashInvoice cash1 = new CashInvoice(1, ayam, "3/13/2020", customer1, InvoiceStatus.FINISHED);
         
-        cashless1.setTotalPrice();
-        CashlessInvoice cashless2 = new CashlessInvoice (2, sapi, "3/3/2020", customer1, InvoiceStatus.ONGOING, promo1);
-        cashless2.setTotalPrice();
-        CashlessInvoice cashless3 = new CashlessInvoice (3, sapi, "3/3/2020", customer1, InvoiceStatus.ONGOING, promo1);
-        cashless3.setTotalPrice();
+        //cashless1.setTotalPrice();
+        //CashlessInvoice cashless2 = new CashlessInvoice (2, sapi, "3/3/2020", customer1, InvoiceStatus.ONGOING, promo1);
+        //cashless2.setTotalPrice();
+        //CashlessInvoice cashless3 = new CashlessInvoice (3, sapi, "3/3/2020", customer1, InvoiceStatus.ONGOING, promo1);
+        //cashless3.setTotalPrice();
         
-        cashless1.printData();
-        cashless2.printData();
-        cashless3.printData();
+        //cashless1.printData();
+        //cashless2.printData();
+        //cashless3.printData();
+        
+        cash1.setTotalPrice();
+        CashInvoice cash2 = new CashInvoice (2, sapi, "3/13/2020", customer1, InvoiceStatus.FINISHED, deliveryFee1);
+        cash2.setTotalPrice();
+        
+        cash1.printData();
+        cash2.printData();
+        
         //Invoice invoice1 = new Invoice(1, ayam.getId(), "27/02/2020", customer1, 10000, InvoiceStatus.FINISHED);
         //ayam.printData();
         //invoice1.printData();
