@@ -93,4 +93,13 @@ public class Promo
         System.out.println("Min Price : "+minPrice);
         System.out.println("Active : "+active);
     }
+    
+    public String toString()
+    {
+        return "Id = " + getId() + 
+        "\nCode = " + getCode() + 
+        "\nDiscount = " + getDiscount() + 
+        "\nMin Price = " + getMinPrice() + 
+        "\nActive Status= " + getActive();
+    }
 }

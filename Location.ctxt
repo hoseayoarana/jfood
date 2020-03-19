@@ -25,4 +25,6 @@ comment7.text=\r\n\ mutator\ setDescription\ untuk\ menetapkan\ description\r\n\
 comment8.params=
 comment8.target=void\ printData()
 comment8.text=\r\n\ method\ printData\ untuk\ menampilkan\ getProvince()\r\n\ @return\ Nothing.\r\n
-numComments=9
+comment9.params=
+comment9.target=java.lang.String\ toString()
+numComments=10

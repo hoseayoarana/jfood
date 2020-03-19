@@ -136,4 +136,13 @@ public class Food
         System.out.println("Category : "+category);
     }
     
+    public String toString()
+    {
+        return "Id = " + getId() + 
+        "\nNama = " + getName() + 
+        "\nSeller = " + getSeller().getName() + 
+        "\nCity = " + getSeller().getLocation().getCity() + 
+        "\nPrice = " + getPrice() + 
+        "\nCategory = " + getCategory();
+    }
 }

@@ -88,4 +88,11 @@ public class Location
     {
         System.out.println(getProvince());
     }
+    
+    public String toString()
+    {
+        return "Province = " + getProvince() + 
+        "\nCity = " + getCity() + 
+        "\nDescription = " + getDescription();
+    }
 }

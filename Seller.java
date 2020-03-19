@@ -129,4 +129,12 @@ public class Seller
     {
         System.out.println(getName());
     }
+    
+    public String toString()
+    {
+        return "Id = " + getId() + 
+        "\nNama = " + getName() + 
+        "\nPhone Number = " + getPhoneNumber() + 
+        "\nLocation = " + getLocation();
+    }
 }
