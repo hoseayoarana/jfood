@@ -33,7 +33,7 @@ public class Customer
         this.name = name;
         setEmail(email);
         setPassword(password);
-        this.joinDate = joinDate;
+        this.joinDate = Calendar.getInstance();
     }
     
     public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
@@ -43,7 +43,7 @@ public class Customer
         setEmail(email);
         setPassword(password);
         //this.joinDate = new GregorianCalendar(year,month,dayOfMonth);
-        joinDate = new java.util.GregorianCalendar(year, month-1, dayOfMonth+1);
+        joinDate = Calendar.getInstance();
     }
     
     public Customer(int id, String name, String email, String password)

@@ -17,13 +17,13 @@ public class CashlessInvoice extends Invoice
     public CashlessInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
     {
         // initialise instance variables
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food, customer, invoiceStatus);
     }
     
     public CashlessInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus, Promo promo)
     {
         // initialise instance variables
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food, customer, invoiceStatus);
         this.promo = promo;
     }
     

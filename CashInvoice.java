@@ -17,13 +17,13 @@ public class CashInvoice extends Invoice
     public CashInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
     {
         // initialise instance variables
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food, customer, invoiceStatus);
     }
     
     public CashInvoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
     {
         // initialise instance variables
-        super(id, food, date, customer, invoiceStatus);
+        super(id, food, customer, invoiceStatus);
         this.deliveryFee = deliveryFee;
     }
     
@@ -73,5 +73,13 @@ public class CashInvoice extends Invoice
         System.out.println("Total Price: " +totalPrice);
         System.out.println("Status: " +super.getInvoiceStatus());
         System.out.println("Payment Type: " +PaymentType.CASH);
+    }
+    
+    public String toString()
+    {
+        return "Id = " + getId() + 
+        "\nFood = " + super.getFood().getName() + 
+        "\nPassword = " + getPassword() + 
+        "\nJoin Date = " + format;
     }
 }

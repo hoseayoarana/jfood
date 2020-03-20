@@ -1,4 +1,9 @@
-
+import java.lang.Object;
+import java.util.*;
+import java.util.regex.*;
+import java.text.Format;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 /**
  * Class Invoice berisi id, idFood, date, totalPrice, dan customer untuk dijadikan sebuah invoice
  *
@@ -10,7 +15,7 @@ public abstract class Invoice
     // bagian ini berisi variabel yang nantinya digunakan sebagai parameter objek
     private int id;                 // id dari invoice
     private Food food;             // idFood dari invoice
-    private String date;            // tanggal dari invoice
+    private Calendar date;            // tanggal dari invoice
     protected int totalPrice;         // totalPrice dari invoice
     private Customer customer;      // data customer
     private PaymentType paymentType;
@@ -24,11 +29,10 @@ public abstract class Invoice
      * @param customer      data customer
      * @param totalPrice    totalPrice dari customer
      */
-    public Invoice(int id, Food food, String date, Customer customer, InvoiceStatus invoiceStatus)
+    public Invoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus)
     {
         this.id = id;
         this.food = food;
-        this.date = date;
         this.customer = customer;
         this.invoiceStatus = invoiceStatus;
     }
@@ -55,7 +59,7 @@ public abstract class Invoice
      * accessor getDate untuk mengambil date
      * @return date     mengembalikan date
      */
-    public String getDate()
+    public Calendar getDate()
     {
         return date;
     }
@@ -107,9 +111,16 @@ public abstract class Invoice
      * mutator setDate untuk menetapkan date
      * @param date        date dari invoice
      */
-    public void setDate(String date)
+    public void setDate(Calendar date)
     {
-        this.date = date;
+       this.date = date;
+    }
+    
+    public void setDate(int year, int month, int dayOfMonth)
+    {
+       date.set(java.util.Calendar.YEAR, year);
+                date.set(java.util.Calendar.MONTH, month);
+                        date.set(java.util.Calendar.DAY_OF_MONTH, dayOfMonth);
     }
     
     /**
@@ -153,4 +164,20 @@ public abstract class Invoice
         System.out.println("Status : "+invoiceStatus);
     }
     */
+   public String toString()
+    {
+        String format = "";
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
+        if(date != null)
+        {
+            format = sdf.format(date.getTime());
+        }
+        
+        return "Id = " + getId() + 
+        "\nFood = " + getFood() + 
+        "\nCustomer = " + customer.getName() + 
+        "\nTotal Price = " + totalPrice + 
+        "\nJoin Date = " + format +
+        "\nStatus : " +invoiceStatus;
+    }
 }
