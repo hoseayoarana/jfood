@@ -14,7 +14,7 @@ public abstract class Invoice
 {
     // bagian ini berisi variabel yang nantinya digunakan sebagai parameter objek
     private int id;                 // id dari invoice
-    private Food food;             // idFood dari invoice
+    private ArrayList<Food> foods;             // idFood dari invoice
     private Calendar date;            // tanggal dari invoice
     protected int totalPrice;         // totalPrice dari invoice
     private Customer customer;      // data customer
@@ -29,12 +29,12 @@ public abstract class Invoice
      * @param customer      data customer
      * @param totalPrice    totalPrice dari customer
      */
-    public Invoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus)
+    public Invoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus)
     {
         this.id = id;
-        this.food = food;
+        this.foods = foods;
         this.customer = customer;
-        this.invoiceStatus = invoiceStatus;
+        this.invoiceStatus = InvoiceStatus.ONGOING;
         this.date = Calendar.getInstance();
     }
 
@@ -51,9 +51,9 @@ public abstract class Invoice
      * accessor getIdFood untuk mengambil idFood
      * @return idFood       mengembalikan idFood
      */
-    public Food getFood()
+    public ArrayList<Food> getFoods()
     {
-        return food;
+        return foods;
     }
     
     /**
@@ -87,7 +87,7 @@ public abstract class Invoice
     
     public InvoiceStatus getInvoiceStatus()
     {
-        return invoiceStatus;
+        return InvoiceStatus.ONGOING;
     }
     
     /**
@@ -103,9 +103,9 @@ public abstract class Invoice
      * mutator setIdFoods untuk menetapkan idFood
      * @param idFood        idFood dari invoice
      */
-    public void setIdFoods(int idFood)
+    public void setFoods(ArrayList<Food> foods)
     {
-        this.food = food;
+        this.foods = foods;
     }
     
     /**
@@ -159,7 +159,7 @@ public abstract class Invoice
     {
         System.out.println("===========Invoice===========");
         System.out.println("ID : "+id);
-        System.out.println("Food ID : "+food);
+        System.out.println("Food ID : "+foods);
         System.out.println("Date : "+date);
         System.out.println("Customer : "+customer.getName());
         System.out.println("Total Price : "+totalPrice);
@@ -169,7 +169,7 @@ public abstract class Invoice
    public String toString()
     {
         return "Id = " + getId() + 
-        "\nFood = " + getFood() + 
+        "\nFood = " + getFoods() +
         "\nCustomer = " + customer.getName() + 
         "\nTotal Price = " + totalPrice + 
         "\nStatus : " +invoiceStatus;

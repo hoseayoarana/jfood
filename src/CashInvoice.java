@@ -19,16 +19,16 @@ public class CashInvoice extends Invoice
     /**
      * Constructor for objects of class CashlessInvoice
      */
-    public CashInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus)
     {
         // initialise instance variables
-        super(id, food, customer, invoiceStatus);
+        super(id, foods, customer, invoiceStatus);
     }
     
-    public CashInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
     {
         // initialise instance variables
-        super(id, food, customer, invoiceStatus);
+        super(id, foods, customer, invoiceStatus);
         this.deliveryFee = deliveryFee;
     }
     
@@ -56,11 +56,12 @@ public class CashInvoice extends Invoice
     
     public void setTotalPrice()
     {
-        if(deliveryFee != 0){
-            super.totalPrice = getFood().getPrice() + deliveryFee;
-        }else{
-            super.totalPrice = getFood().getPrice();
+        super.totalPrice=0;
+        for(Food foodList : getFoods())
+        {
+            super.totalPrice=super.totalPrice+foodList.getPrice();
         }
+        super.totalPrice=super.totalPrice+deliveryFee;
         
     }
     
@@ -68,7 +69,7 @@ public class CashInvoice extends Invoice
     {
         System.out.println("============INVOICE============");
         System.out.println("ID: " +super.getId());
-        System.out.println("Food: " +super.getFood().getName());
+        System.out.println("Food: " +super.getFoods().getName());
         System.out.println("Date: " +super.getDate());
         System.out.println("Customer: " +super.getCustomer().getName());
         if (deliveryFee != 0)
@@ -82,6 +83,12 @@ public class CashInvoice extends Invoice
     
     public String toString()
     {
+        String foods = "";
+        for (Food foodList : getFoods()) {
+            foods = foods + foodList.getName() + ", ";
+        }
+        foods = foods.substring(0, foods.length() - 2);
+        setTotalPrice();
         String format = "";
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         if(super.getDate() != null)
@@ -93,7 +100,7 @@ public class CashInvoice extends Invoice
         {
             return "============INVOICE============" +
         "\nId = " + super.getId() +  
-        "\nFood = " + super.getFood().getName() + 
+        "\nFood = " + foods +
         "\nDate: " + format +
         "\nCustomer: " +super.getCustomer().getName() +
         "\nTotal Price: " + totalPrice +
@@ -103,7 +110,7 @@ public class CashInvoice extends Invoice
         }else{
             return "============INVOICE============" +
         "\nId = " + super.getId() +  
-        "\nFood = " + super.getFood().getName() + 
+        "\nFood = " + foods +
         "\nDate: " + format +
         "\nCustomer: " +super.getCustomer().getName() +
         "\nTotal Price: " + totalPrice +

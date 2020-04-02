@@ -19,16 +19,16 @@ public class CashlessInvoice extends Invoice
     /**
      * Constructor for objects of class CashlessInvoice
      */
-    public CashlessInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus)
+    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus)
     {
         // initialise instance variables
-        super(id, food, customer, invoiceStatus);
+        super(id, foods, customer, invoiceStatus);
     }
     
-    public CashlessInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus, Promo promo)
+    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus, Promo promo)
     {
         // initialise instance variables
-        super(id, food, customer, invoiceStatus);
+        super(id, foods, customer, invoiceStatus);
         this.promo = promo;
     }
     
@@ -56,10 +56,18 @@ public class CashlessInvoice extends Invoice
     
     public void setTotalPrice()
     {
-        if(promo != null && promo.getActive() == true && getFood().getPrice() >= promo.getMinPrice()){
-            super.totalPrice = getFood().getPrice() - promo.getDiscount();
-        }else{
-            super.totalPrice = getFood().getPrice();
+        super.totalPrice=0;
+        for(Food foodList : getFoods())
+        {
+            super.totalPrice=super.totalPrice+foodList.getPrice();
+        }
+        if (promo != null && getPromo().getActive() == true && super.totalPrice > getPromo().getMinPrice())
+        {
+            super.totalPrice = super.totalPrice  - promo.getDiscount();
+        }
+
+        else {
+            super.totalPrice = super.totalPrice + 0;
         }
         
     }
@@ -69,7 +77,7 @@ public class CashlessInvoice extends Invoice
     {
         System.out.println("============INVOICE============");
         System.out.println("ID: " +super.getId());
-        System.out.println("Food: " +super.getFood().getName());
+        System.out.println("Food: " +super.getFoods().getName());
         System.out.println("Date: " +super.getDate());
         System.out.println("Customer: " +super.getCustomer().getName());
         if (promo != null && super.getFood().getPrice() >= promo.getMinPrice() && promo.getActive() == true)
@@ -83,18 +91,24 @@ public class CashlessInvoice extends Invoice
     */
     public String toString()
     {
+        String foods = "";
+        for (Food foodList : getFoods()) {
+            foods = foods + foodList.getName() + ", ";
+        }
+        foods = foods.substring(0, foods.length() - 2);
+        setTotalPrice();
         String format = "";
         SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
         if(super.getDate() != null)
         {
             format = sdf.format(super.getDate().getTime());
         }
-        
-        if (promo != null && super.getFood().getPrice() >= promo.getMinPrice() && promo.getActive() == true)
+
+        if(promo == null || promo.getActive() == false || super.totalPrice  < getPromo().getMinPrice())
         {
             return "============INVOICE============" +
         "\nId = " + super.getId() +  
-        "\nFood = " + super.getFood().getName() + 
+        "\nFood = " + foods +
         "\nDate: " + format +
         "\nCustomer: " +super.getCustomer().getName() +
         "\nTotal Price: " + totalPrice +
@@ -104,7 +118,7 @@ public class CashlessInvoice extends Invoice
         }else{
             return "============INVOICE============" +
         "\nId = " + super.getId() +  
-        "\nFood = " + super.getFood().getName() + 
+        "\nFood = " + foods +
         "\nDate: " + format +
         "\nCustomer: " +super.getCustomer().getName() +
         "\nTotal Price: " + totalPrice +

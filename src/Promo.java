@@ -79,7 +79,7 @@ public class Promo
         this.minPrice = minPrice;
     }
     
-    public void setActive()
+    public void setActive(boolean b)
     {
         this.active = active;
     }

@@ -19,23 +19,23 @@ public class JFood
      */
     public static void main(String[] args)
     {
-        Location location1 = new Location("Jawa Barat", "tes", "Bogor");
+
         
-        Seller seller1 = new Seller(1, "HoseaYoarana", "hosea.yoarana@gmail.com", "081212343199", location1);
+//        Seller seller1 = new Seller(1, "HoseaYoarana", "hosea.yoarana@gmail.com", "081212343199", location1);
+//
+//        Food ayam = new Food(1, "Ayam", seller1, 10000, FoodCategory.BEVERAGES);
+//        Food sapi = new Food (15, "Cowfee" , seller1, 15000, FoodCategory.COFFEE);
+//
+//        Customer customer1 = new Customer(1, "Jamal", "jamal..@gmail.com", "Haha12",new GregorianCalendar(2020, 03, 13));
+//        Customer customer2 = new Customer(2, "Jamsan", "jamsan@gmail.com", "12345678",new GregorianCalendar(2020, 02, 12));
+//        Customer customer3 = new Customer(3, "Jamakun", "jamkun@gmail.com", "Haha65",new GregorianCalendar(2020, 01, 11));
+//
+//        Promo promo1 = new Promo(1, "Gagah", 5000, 10000, true);
         
-        Food ayam = new Food(1, "Ayam", seller1, 10000, FoodCategory.BEVERAGES);
-        Food sapi = new Food (15, "Cowfee" , seller1, 15000, FoodCategory.COFFEE);
+//        int deliveryFee1 = 5000;
         
-        Customer customer1 = new Customer(1, "Jamal", "jamal..@gmail.com", "Haha12",new GregorianCalendar(2020, 03, 13));
-        Customer customer2 = new Customer(2, "Jamsan", "jamsan@gmail.com", "12345678",new GregorianCalendar(2020, 02, 12));
-        Customer customer3 = new Customer(3, "Jamakun", "jamkun@gmail.com", "Haha65",new GregorianCalendar(2020, 01, 11));
-        
-        Promo promo1 = new Promo(1, "Gagah", 5000, 10000, true);
-        
-        int deliveryFee1 = 5000;
-        
-        CashlessInvoice cashless1 = new CashlessInvoice(1, ayam, customer1, InvoiceStatus.ONGOING);
-        CashInvoice cash1 = new CashInvoice(1, ayam, customer1, InvoiceStatus.FINISHED);
+//        CashlessInvoice cashless1 = new CashlessInvoice(1, ayam, customer1, InvoiceStatus.ONGOING);
+//        CashInvoice cash1 = new CashInvoice(1, ayam, customer1, InvoiceStatus.FINISHED);
         
         //cashless1.setTotalPrice();
         //CashlessInvoice cashless2 = new CashlessInvoice (2, sapi, "3/3/2020", customer1, InvoiceStatus.ONGOING, promo1);
@@ -65,10 +65,32 @@ public class JFood
         //System.out.println(customer2.toString());
         //System.out.println(customer3.toString());
         
-        cash1.setTotalPrice();
-        cashless1.setTotalPrice();
-        
-        System.out.println(cash1.toString());
-        System.out.println(cashless1.toString());
+//        cash1.setTotalPrice();
+//        cashless1.setTotalPrice();
+//
+//        System.out.println(cash1.toString());
+//        System.out.println(cashless1.toString());
+
+        Location location1 = new Location("Jawa Barat", "tes", "Bogor");
+
+        DatabaseSeller.addSeller(new Seller(1, "HoseaYoarana", "hosea.yoarana@gmail.com",
+                "081212343199", location1));
+
+        DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Jamal", "jamal..@gmail.com",
+                "Haha12",new GregorianCalendar(2020, 03, 13)));
+        DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Jamsan", "jamsan@gmail.com",
+                "12345678",new GregorianCalendar(2020, 02, 12)));
+        DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Jamakun", "jamkun@gmail.com",
+                "Haha65",new GregorianCalendar(2020, 01, 11)));
+
+        System.out.println(DatabaseCustomer.getCustomerDatabase());
+        System.out.println("\n");
+
+        DatabaseFood.addFood(new Food(DatabaseFood.getLastId()+1, "Ayam", DatabaseSeller.getSellerById(1), 10000, FoodCategory.BEVERAGES));
+        DatabaseFood.addFood(new Food (DatabaseFood.getLastId()+1, "Cowfee" , DatabaseSeller.getSellerById(1), 15000, FoodCategory.COFFEE));
+        DatabaseFood.addFood(new Food (DatabaseFood.getLastId()+1, "Safee" , DatabaseSeller.getSellerById(1), 15000, FoodCategory.COFFEE));
+
+        System.out.println(DatabaseFood.getFoodByCategory(FoodCategory.BEVERAGES));
+        System.out.println(DatabaseFood.getFoodByCategory(FoodCategory.COFFEE));
     }
 }

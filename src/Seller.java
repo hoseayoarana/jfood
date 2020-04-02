@@ -80,7 +80,7 @@ public class Seller
      * mutator setId untuk menetapkan id
      * @param id        id dari customer
      */
-    public void setId(int id)
+    public void setId()
     {
         this.id = id;
     }
@@ -132,7 +132,7 @@ public class Seller
     
     public String toString()
     {
-        return "Id = " + getId() + 
+        return "Id = " + getId() +
         "\nNama = " + getName() + 
         "\nPhone Number = " + getPhoneNumber() + 
         "\nLocation = " + getLocation();
