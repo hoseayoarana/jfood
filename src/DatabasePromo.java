@@ -72,7 +72,7 @@ public class DatabasePromo
             }
         }
         PROMO_DATABASE.add(promo);
-        lastId = promo.getId() + 1;
+        lastId = promo.getId();
         return true;
     }
 

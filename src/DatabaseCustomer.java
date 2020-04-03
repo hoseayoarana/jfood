@@ -61,7 +61,7 @@ public class DatabaseCustomer
             }
         }
         CUSTOMER_DATABASE.add(customer);
-        lastId = customer.getId() + 1;
+        lastId = customer.getId();
         return true;
     }
     
