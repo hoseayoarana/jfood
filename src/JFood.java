@@ -92,5 +92,20 @@ public class JFood
 
         System.out.println(DatabaseFood.getFoodByCategory(FoodCategory.BEVERAGES));
         System.out.println(DatabaseFood.getFoodByCategory(FoodCategory.COFFEE));
+
+        DatabasePromo.addPromo(new Promo(DatabasePromo.getLastId()+1, "JAFUT", 40000, 50000, false));
+        DatabasePromo.addPromo(new Promo(DatabasePromo.getLastId()+1, "JAFUT", 45000, 100000, false));
+        System.out.println(DatabasePromo.getPromoDatabase());
+        System.out.println("\n");
+
+        ArrayList<Food> food1 = new ArrayList<Food>();
+        food1.add(DatabaseFood.getFoodById(1));
+        food1.add(DatabaseFood.getFoodById(2));
+
+        ArrayList<Food> food2 = new ArrayList<Food>();
+        food2.add(DatabaseFood.getFoodById(1));
+        food2.add(DatabaseFood.getFoodById(2));
+
+        DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId()+1, food1, DatabaseCustomer.getCustomerById(1), 1));
     }
 }
