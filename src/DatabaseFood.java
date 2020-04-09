@@ -29,16 +29,15 @@ public class DatabaseFood
         return lastId;
     }
 
-    public static Food getFoodById(int id)
+    public static Food getFoodById(int id) throws FoodNotFoundException
     {
-        for(Food food : FOOD_DATABASE)
+        for(Food f : FOOD_DATABASE)
         {
-            if(food.getId() == id)
-            {
-                return food;
+            if(f.getId() == id){
+                return f;
             }
         }
-        return null;
+        throw new FoodNotFoundException(id);
     }
 
     public static ArrayList<Food> getFoodBySeller(int sellerId)
@@ -83,16 +82,15 @@ public class DatabaseFood
      * @param id      food dari DatabaseFood
      * @return true     mengembalikan true
      */
-    public static boolean removeFood(int id)
+    public static boolean removeFood(int id) throws FoodNotFoundException
     {
-        for(Food food : FOOD_DATABASE)
+        for(Food f : FOOD_DATABASE)
         {
-            if(food.getId() == id)
-            {
-                FOOD_DATABASE.remove(food);
+            if(f.getId() == id){
+                return false;
             }
         }
-        return false;
+        throw new FoodNotFoundException(id);
     }
     
     /**

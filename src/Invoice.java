@@ -29,7 +29,7 @@ public abstract class Invoice
      * @param customer      data customer
      * @param totalPrice    totalPrice dari customer
      */
-    public Invoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus)
+    public Invoice(int id, ArrayList<Food> foods, Customer customer)
     {
         this.id = id;
         this.foods = foods;

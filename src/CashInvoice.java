@@ -19,16 +19,16 @@ public class CashInvoice extends Invoice
     /**
      * Constructor for objects of class CashlessInvoice
      */
-    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
         // initialise instance variables
-        super(id, foods, customer, invoiceStatus);
+        super(id,foods,customer);
     }
     
-    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer,  int deliveryFee)
     {
         // initialise instance variables
-        super(id, foods, customer, invoiceStatus);
+        super(id, foods, customer);
         this.deliveryFee = deliveryFee;
     }
     

@@ -19,16 +19,16 @@ public class CashlessInvoice extends Invoice
     /**
      * Constructor for objects of class CashlessInvoice
      */
-    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus)
+    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
         // initialise instance variables
-        super(id, foods, customer, invoiceStatus);
+        super(id, foods, customer);
     }
     
-    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus, Promo promo)
+    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, Promo promo)
     {
         // initialise instance variables
-        super(id, foods, customer, invoiceStatus);
+        super(id, foods, customer);
         this.promo = promo;
     }
     

@@ -31,16 +31,15 @@ public class DatabaseSeller
         return lastId;
     }
 
-    public static Seller getSellerById(int id)
+    public static Seller getSellerById(int id) throws SellerNotFoundException
     {
-        for(Seller seller : SELLER_DATABASE)
+        for(Seller s : SELLER_DATABASE)
         {
-            if(seller.getId() == id)
-            {
-                return seller;
+            if(s.getId() == id){
+                return s;
             }
         }
-        return null;
+        throw new SellerNotFoundException(id);
     }
     /**
      * An example of a method - replace this comment with your own
@@ -56,17 +55,15 @@ public class DatabaseSeller
         return true;
     }
     
-    public static boolean removeSeller(int id)
+    public static boolean removeSeller(int id) throws SellerNotFoundException
     {
-        for(Seller seller : SELLER_DATABASE)
+        for(Seller s : SELLER_DATABASE)
         {
-            if(seller.getId() == id)
-            {
-                SELLER_DATABASE.remove(seller);
-                return true;
+            if(s.getId() == id){
+                return false;
             }
         }
-        return false;
+        throw new SellerNotFoundException(id);
     }
     
 //    public static Seller getSeller()

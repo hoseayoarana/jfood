@@ -31,16 +31,15 @@ public class DatabasePromo
         return lastId;
     }
 
-    public static Promo getPromoById(int id)
+    public static Promo getPromoById(int id) throws PromoNotFoundException
     {
-        for(Promo promo : PROMO_DATABASE)
+        for(Promo p : PROMO_DATABASE)
         {
-            if(promo.getId() == id)
-            {
-                return promo;
+            if(p.getId() == id){
+                return p;
             }
         }
-        return null;
+        throw new PromoNotFoundException(id);
     }
 
     public static Promo getPromoByCode(String code)
@@ -61,18 +60,18 @@ public class DatabasePromo
      * @param  promo  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public static boolean addPromo(Promo promo)
+    public static boolean addPromo(Promo promo) throws PromoCodeAlreadyExistsException
     {
-        // put your code here
-        for (Promo ini : PROMO_DATABASE)
+        for(Promo p : PROMO_DATABASE)
         {
-            if(ini.getCode().equals(promo.getCode()))
-            {
-                return false;
+            for(int i = 0; i < PROMO_DATABASE.size(); i++){
+                if(promo.getCode().equals(PROMO_DATABASE.get(i).getCode())){
+                    throw new PromoCodeAlreadyExistsException(promo);
+                }
             }
         }
         PROMO_DATABASE.add(promo);
-        lastId = promo.getId();
+        lastId = promo.getId()+1;
         return true;
     }
 
@@ -100,16 +99,15 @@ public class DatabasePromo
         }
         return false;
     }
-    public static boolean removePromo(int id)
+    public static boolean removePromo(int id) throws PromoNotFoundException
     {
-        for(Promo promo : PROMO_DATABASE)
+        for(Promo p : PROMO_DATABASE)
         {
-            if(promo.getId() == id)
-            {
-                PROMO_DATABASE.remove(promo);
+            if(p.getId() == id){
+                return false;
             }
         }
-        return false;
+        throw new PromoNotFoundException(id);
     }
 
 //    public static boolean getPromo()
