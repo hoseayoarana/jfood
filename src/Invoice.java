@@ -166,12 +166,12 @@ public abstract class Invoice
         System.out.println("Status : "+invoiceStatus);
     }
     */
-   public String toString()
-    {
-        return "Id = " + getId() + 
-        "\nFood = " + getFoods() +
-        "\nCustomer = " + customer.getName() + 
-        "\nTotal Price = " + totalPrice + 
-        "\nStatus : " +invoiceStatus;
-    }
+   public abstract String toString();
+//    {
+//        return "Id = " + getId() +
+//        "\nFood = " + getFoods() +
+//        "\nCustomer = " + customer.getName() +
+//        "\nTotal Price = " + totalPrice +
+//        "\nStatus : " +invoiceStatus;
+//    }
 }
