@@ -30,7 +30,7 @@ public class JFood
 //        Customer customer2 = new Customer(2, "Jamsan", "jamsan@gmail.com", "12345678",new GregorianCalendar(2020, 02, 12));
 //        Customer customer3 = new Customer(3, "Jamakun", "jamkun@gmail.com", "Haha65",new GregorianCalendar(2020, 01, 11));
 //
-//        Promo promo1 = new Promo(1, "Gagah", 5000, 10000, true);
+        Promo promo1 = new Promo(1, "Gagah", 5000, 10000, true);
         
 //        int deliveryFee1 = 5000;
         
@@ -209,7 +209,7 @@ public class JFood
 
         try
         {
-            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, makan, DatabaseCustomer.getCustomerById(1)));
+            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, makan, DatabaseCustomer.getCustomerById(1), promo1));
         }
         catch (CustomerNotFoundException notfound)
         {
@@ -218,7 +218,7 @@ public class JFood
 
         try
         {
-            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, makan, DatabaseCustomer.getCustomerById(2)));
+            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, makan, DatabaseCustomer.getCustomerById(2), promo1));
         }
         catch (CustomerNotFoundException notfound)
         {
@@ -227,7 +227,7 @@ public class JFood
 
         try
         {
-            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, makan, DatabaseCustomer.getCustomerById(3)));
+            DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId() + 1, makan, DatabaseCustomer.getCustomerById(3), promo1));
         }
         catch (CustomerNotFoundException notfound)
         {
