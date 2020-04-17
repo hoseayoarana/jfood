@@ -14,7 +14,7 @@ public class PromoController {
     }
 
     @RequestMapping(value = "/promo/{code}", method = RequestMethod.GET)
-    public Promo getPromoByCode(@RequestParam String code) {
+    public Promo getPromoByCode(@PathVariable String code) {
         return DatabasePromo.getPromoByCode(code);
     }
 
@@ -29,6 +29,7 @@ public class PromoController {
             DatabasePromo.addPromo(promo);
         } catch (PromoCodeAlreadyExistsException e) {
             System.out.println(e.getMessage());
+            return null;
         }
         return promo;
     }

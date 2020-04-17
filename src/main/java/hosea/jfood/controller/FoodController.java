@@ -30,13 +30,13 @@ public class FoodController {
     }
 
     @RequestMapping(value = "/food/seller/{sellerId}", method = RequestMethod.GET)
-    public ArrayList<Food> getFoodBySeller(@PathVariable int id) {
-        return DatabaseFood.getFoodBySeller(id);
+    public ArrayList<Food> getFoodBySeller(@PathVariable int sellerId) {
+        return DatabaseFood.getFoodBySeller(sellerId);
     }
 
 
     @RequestMapping(value = "/food/category/{category}", method = RequestMethod.GET)
-    public ArrayList<Food> getFoodByCategory(FoodCategory category){
+    public ArrayList<Food> getFoodByCategory(@PathVariable FoodCategory category){
         return DatabaseFood.getFoodByCategory(category);
     }
 
@@ -51,6 +51,7 @@ public class FoodController {
             DatabaseFood.addFood(food);
         } catch (SellerNotFoundException e) {
             System.out.println(e.getMessage());
+            return null;
         }
         return food;
     }

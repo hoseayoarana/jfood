@@ -94,7 +94,7 @@ public class DatabaseInvoice
         return false;
     }
 
-    public static boolean removeCustomer(int id) throws InvoiceNotFoundExeption
+    public static boolean removeInvoice(int id) throws InvoiceNotFoundExeption
     {
         for(Invoice i : INVOICE_DATABASE)
         {
