@@ -3,7 +3,7 @@ package hosea.jfood;
  * Class Seller berisi id, name, email, phoneNumber, dan location untuk dijadikan sebuah objek dari seller
  *
  * @author Hosea Yoarana
- * @version 27-02-2020
+ * @version 27 Feb 2020
  */
 public class Seller
 {
@@ -78,7 +78,6 @@ public class Seller
     
     /**
      * mutator setId untuk menetapkan id
-     * @param id        id dari customer
      */
     public void setId()
     {

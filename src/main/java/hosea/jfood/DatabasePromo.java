@@ -2,40 +2,39 @@ package hosea.jfood;
 import java.util.ArrayList;
 
 /**
- * Write a description of class DatabasePromo here.
+ * Class DatabaseFood berisi listFood
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Hosea Yoarana
+ * @version 27 Feb 2020
  */
 public class DatabasePromo
 {
-    // instance variables - replace the example below with your own
     private static ArrayList<Promo> PROMO_DATABASE = new ArrayList<>();
     private static int lastId;
-
-    /**
-     * Constructor for objects of class DatabasePromo
-     */
-    /*public DatabasePromo()
-    {
-        // initialise instance variables
-        
-    }
-    */
     public static ArrayList<Promo> getPromoDatabase()
     {
         return PROMO_DATABASE;
     }
 
+    /**
+     * method accessor untuk mendapatkan id terkahir yang ada pada DB
+     * @return id terakhir dalam DB
+     */
     public static int getLastId()
     {
         return lastId;
     }
 
+    /**
+     * method accessor yang digunakan untuk mengambil promo berdasarkan ID
+     * pada DB
+     * @param id
+     * @return promo apabila ditemukan, apabila tidak maka keluar exception
+     * @throws PromoNotFoundException
+     */
     public static Promo getPromoById(int id) throws PromoNotFoundException
     {
-        for(Promo p : PROMO_DATABASE)
-        {
+        for(Promo p : PROMO_DATABASE) {
             if(p.getId() == id){
                 return p;
             }
@@ -43,12 +42,16 @@ public class DatabasePromo
         throw new PromoNotFoundException(id);
     }
 
+    /**
+     * method accessor yang digunakan untuk mengambil promo berdasarkan code
+     * pada DB
+     * @param code
+     * @return promo apabila ditemukan, apabila tidak maka dianggap null
+     */
     public static Promo getPromoByCode(String code)
     {
-        for(Promo promo : PROMO_DATABASE)
-        {
-            if(promo.getCode().equals(code))
-            {
+        for(Promo promo : PROMO_DATABASE) {
+            if(promo.getCode().equals(code)) {
                 return promo;
             }
         }
@@ -56,15 +59,15 @@ public class DatabasePromo
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  promo  a sample parameter for a method
-     * @return    the sum of x and y
+     * method yang digunakan untuk menambahkan promo
+     * pada DB
+     * @param promo
+     * @return promo masuk ke DB
+     * @throws PromoCodeAlreadyExistsException
      */
     public static boolean addPromo(Promo promo) throws PromoCodeAlreadyExistsException
     {
-        for(Promo p : PROMO_DATABASE)
-        {
+        for(Promo p : PROMO_DATABASE) {
             for(int i = 0; i < PROMO_DATABASE.size(); i++){
                 if(promo.getCode().equals(PROMO_DATABASE.get(i).getCode())){
                     throw new PromoCodeAlreadyExistsException(promo);
@@ -76,12 +79,15 @@ public class DatabasePromo
         return true;
     }
 
+    /**
+     * method yang digunakan untuk mengaktifkan promo
+     * @param id
+     * @return active
+     */
     public static boolean activePromo(int id)
     {
-        for(Promo promo : PROMO_DATABASE)
-        {
-            if(promo.getId() == id)
-            {
+        for(Promo promo : PROMO_DATABASE) {
+            if(promo.getId() == id) {
                 promo.setActive(true);
                 return true;
             }
@@ -89,43 +95,36 @@ public class DatabasePromo
         return false;
     }
 
+    /**
+     * method yang digunakan untuk me-nonaktifkan promo
+     * @param id
+     * @return deactive
+     */
     public static boolean deactivePromo(int id)
     {
         for (Promo promo : PROMO_DATABASE) {
-            if (promo.getId() == id)
-            {
+            if (promo.getId() == id) {
                 promo.setActive(false);
                 return true;
             }
         }
         return false;
     }
+
+    /**
+     * method yang digunakan untuk menghapus promo
+     * pada DB
+     * @param id
+     * @return true apabila dapat dihapus, false apabila tidak ditemukan dan mengeluarkan exception
+     * @throws PromoNotFoundException
+     */
     public static boolean removePromo(int id) throws PromoNotFoundException
     {
-        for(Promo p : PROMO_DATABASE)
-        {
-            if(p.getId() == id){
+        for(Promo p : PROMO_DATABASE) {
+            if(p.getId() == id) {
                 return false;
             }
         }
         throw new PromoNotFoundException(id);
     }
-
-//    public static boolean getPromo()
-//    {
-//        return true;
-//    }
-//
-//    public static boolean removePromo()
-//    {
-//        return true;
-//    }
-//
-//    public static String[] getListPromo()
-//    {
-//        return listPromo;
-//    }
-    
-    
-    
 }

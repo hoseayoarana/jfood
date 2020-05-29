@@ -5,82 +5,90 @@ import java.util.regex.*;
 import java.text.Format;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 /**
- * Write a description of class CashInvoice here.
+ * Class untuk membuat dan mendefinisikan invoice yang bersifat Cash
+ * @see Invoice
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Hosea Yoarana/ NPM: 1706042913
+ * @version 27 Mei 2020
  */
 public class CashInvoice extends Invoice
 {
-    // instance variables - replace the example below with your own
     private final static PaymentType PAYMENT_TYPE = PaymentType.CASH;
     private int deliveryFee;
 
     /**
-     * Constructor for objects of class CashlessInvoice
+     * Constructor untuk objek class CashInvoice
+     *
+     * @param  id
+     * @param customer
+     * @param foods
+     * @see Invoice
      */
     public CashInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
-        // initialise instance variables
         super(id,foods,customer);
     }
-    
+
+    /**
+     * Constructor untuk objek class CashInvoice
+     *
+     * @param  id
+     * @param customer
+     * @param foods
+     * @param deliveryFee
+     * @see Invoice
+     */
     public CashInvoice(int id, ArrayList<Food> foods, Customer customer,  int deliveryFee)
     {
-        // initialise instance variables
         super(id, foods, customer);
         this.deliveryFee = deliveryFee;
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * Method accessor untuk mengambil Payment Type dari suatu invoice
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return PAYMENT_TYPE
      */
     public PaymentType getPaymentType()
     {
-        // put your code here
         return PAYMENT_TYPE;
     }
-    
+
+    /**
+     * Method accessor untuk mengambil deliveryFee dari suatu invoice
+     *
+     * @return deliveryFee
+     */
     public int getDeliveryFee()
     {
         return deliveryFee;
     }
-    
+
+    /**
+     * Method mutator untuk set deliveryFee untuk suatu invoice
+     *
+     * @param deliveryFee
+     */
     public void setDeliveryFee(int deliveryFee)
     {
         this.deliveryFee = deliveryFee;
     }
-    
+
+    /**
+     * Method mutator untuk set totalPrice untuk suatu invoice
+     *
+     */
     public void setTotalPrice()
     {
         super.totalPrice=0;
-        for(Food foodList : getFoods())
-        {
+        for(Food foodList : getFoods()) {
             super.totalPrice=super.totalPrice+foodList.getPrice();
         }
         super.totalPrice=super.totalPrice+deliveryFee;
         
     }
-    
-    /*public void printData()
-    {
-        System.out.println("============INVOICE============");
-        System.out.println("ID: " +super.getId());
-        System.out.println("Food: " +super.getFoods().getName());
-        System.out.println("Date: " +super.getDate());
-        System.out.println("Customer: " +super.getCustomer().getName());
-        if (deliveryFee != 0)
-        {
-            System.out.println("Delivery Fee: " +deliveryFee);
-        }
-        System.out.println("Total Price: " +totalPrice);
-        System.out.println("Status: " +super.getInvoiceStatus());
-        System.out.println("Payment Type: " +PaymentType.CASH);
-    }*/
     
     public String toString()
     {
@@ -119,6 +127,5 @@ public class CashInvoice extends Invoice
         "\nPayment Type: " +PAYMENT_TYPE +
         "\nDelivery Fee: 0";
         }
-        
     }
 }

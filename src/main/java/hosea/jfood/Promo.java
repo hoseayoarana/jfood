@@ -1,13 +1,13 @@
 package hosea.jfood;
+
 /**
- * Write a description of class Promo here.
+ * Class untuk mengatur, membuat, dan mendefinisikan promo
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Hosea Yoarana/ NPM: 1706042913
+ * @version 27 Mei 2020
  */
 public class Promo
 {
-    // instance variables - replace the example below with your own
     private int id;
     private String code;
     private int discount;
@@ -15,11 +15,10 @@ public class Promo
     private boolean active;
 
     /**
-     * Constructor for objects of class Promo
+     * Constructor untuk objek class Promo
      */
     public Promo(int id, String code, int discount, int minPrice, boolean active)
     {
-        // initialise instance variables
         this.id = id;
         this.code = code;
         this.discount = discount;
@@ -28,57 +27,86 @@ public class Promo
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * method accessor yang digunakan untuk mengambil ID promo
+     * @return id promo
      */
     public int getId()
     {
-        // put your code here
         return id;
     }
-    
+
+    /**
+     * method accessor yang digunakan untuk mengambil code promo
+     * @return code promo
+     */
     public String getCode()
     {
         return code;
     }
-    
+
+    /**
+     * method accessor yang digunakan untuk mengambil discount yang diberikan promo
+     * @return discount promo
+     */
     public int getDiscount()
     {
         return discount;
     }
-    
+
+    /**
+     * method accessor yang digunakan untuk mengambil minimal price yang
+     * harus dibayarkan agar promo aktif
+     * @return minPrice promo
+     */
     public int getMinPrice()
     {
         return minPrice;
     }
-    
+
+    /**
+     * method accessor yang digunakan untuk mengambil status dari promo
+     * @return active promo
+     */
     public boolean getActive()
     {
         return active;
     }
-    
+
+    /**
+     * method mutator yang digunakan untuk menetapkan id untuk promo
+     */
     public void setId()
     {
         this.id = id;
     }
-    
+
+    /**
+     * method mutator yang digunakan untuk menetapkan code untuk promo
+     */
     public void setCode()
     {
         this.code = code;
     }
-    
+
+    /**
+     * method mutator yang digunakan untuk menetapkan discount untuk promo
+     */
     public void setDiscount()
     {
         this.discount = discount;
     }
-    
+
+    /**
+     * method mutator yang digunakan untuk menetapkan minPrice untuk promo
+     */
     public void setMinPrice()
     {
         this.minPrice = minPrice;
     }
-    
+
+    /**
+     * method mutator yang digunakan untuk menetapkan status active untuk promo
+     */
     public void setActive(boolean b)
     {
         this.active = active;

@@ -1,18 +1,23 @@
 package hosea.jfood;
+
 /**
- * Enumeration class FoodCategory - write a description of the enum class here
+ * Class yang digunakan untuk menetapkan category untuk setiap food
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Hosea Yoarana/ NPM: 1706042913
+ * @version 27 Mei 2020
  */
 public enum FoodCategory
 {
-    BEVERAGES ("Beverages"), COFFEE ("Coffe"), WESTERN ("Western"), 
+    BEVERAGES ("Beverages"), COFFEE ("Coffee"), WESTERN ("Western"),
     SNACKS ("Snacks"), RICE ("Rice"), NOODLES ("Noodles"), 
     BAKERY ("Bakery"), JAPANESE ("Japanese");
     
     private String category;
-    
+
+    /**
+     * method yang digunakan untuk menetapkan category dari food
+     * @param category
+     */
     private FoodCategory(String category)
     {
         this.category = category;

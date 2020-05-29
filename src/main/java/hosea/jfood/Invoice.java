@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
  * Class Invoice berisi id, idFood, date, totalPrice, dan customer untuk dijadikan sebuah invoice
  *
  * @author Hosea Yoarana
- * @version 27-02-2020
+ * @version 27 Feb 2020
  */
 public abstract class Invoice
 {
@@ -25,10 +25,8 @@ public abstract class Invoice
     /**
      * Inisiasi variabel kedalam method public untuk datatype Invoice
      * @param id            id dari invoice
-     * @param idFood        idFood dari invoice
-     * @param date          tanggal dari invoice
      * @param customer      data customer
-     * @param totalPrice    totalPrice dari customer
+     * @param foods
      */
     public Invoice(int id, ArrayList<Food> foods, Customer customer)
     {
@@ -70,7 +68,7 @@ public abstract class Invoice
      * accessor getTotalPrice untuk mengambil totalPrice
      * @return totalPrice     mengembalikan totalPrice
      */
-    protected int getTotalPrice()
+    public int getTotalPrice()
     {
         return totalPrice;   
     }
@@ -83,12 +81,19 @@ public abstract class Invoice
     {
         return customer;
     }
-    
+
+    /**
+     * method accessor untuk mengambil PaymentType
+     */
     public abstract PaymentType getPaymentType();
-    
+
+    /**
+     * method accessor yang digunakan untuk mengambil invoiceStatus
+     * @return invoiceStatus
+     */
     public InvoiceStatus getInvoiceStatus()
     {
-        return InvoiceStatus.ONGOING;
+        return this.invoiceStatus;
     }
     
     /**
@@ -102,7 +107,7 @@ public abstract class Invoice
     
     /**
      * mutator setIdFoods untuk menetapkan idFood
-     * @param idFood        idFood dari invoice
+     * @param foods        idFood dari invoice
      */
     public void setFoods(ArrayList<Food> foods)
     {
@@ -117,7 +122,13 @@ public abstract class Invoice
     {
        this.date = date;
     }
-    
+
+    /**
+     * method mutator yang digunakan untuk mengatur date
+     * @param year
+     * @param month
+     * @param dayOfMonth
+     */
     public void setDate(int year, int month, int dayOfMonth)
     {
        date.set(java.util.Calendar.YEAR, year);
@@ -126,8 +137,7 @@ public abstract class Invoice
     }
     
     /**
-     * mutator setTotalPrice untuk menetapkan totalProce
-     * @param totalPrice        totalPrice dari invoice
+     * mutator setTotalPrice untuk menetapkan totalPrice
      */
     public abstract void setTotalPrice();
     
@@ -139,40 +149,15 @@ public abstract class Invoice
     {
         this.customer = customer;
     }
-    
-    /*public void setPaymentType(PaymentType paymentType)
-    {
-        this.paymentType = paymentType;
-    }
-    */
+
+    /**
+     * method mutator yang digunakan untuk mengatur invoiceStatus
+     * @param invoiceStatus
+     */
     public void setInvoiceStatus(InvoiceStatus invoiceStatus)
-    
     {
         this.invoiceStatus = invoiceStatus;
     }
-    
-    /**
-     * mutator printData untuk menampilkan getTotalPrice()
-     * @return Nothing.        mengembalikan Nothing
-     */
-    /*
-    public abstract void printData();
-    {
-        System.out.println("===========Invoice===========");
-        System.out.println("ID : "+id);
-        System.out.println("Food ID : "+foods);
-        System.out.println("Date : "+date);
-        System.out.println("Customer : "+customer.getName());
-        System.out.println("Total Price : "+totalPrice);
-        System.out.println("Status : "+invoiceStatus);
-    }
-    */
-   public abstract String toString();
-//    {
-//        return "Id = " + getId() +
-//        "\nFood = " + getFoods() +
-//        "\nCustomer = " + customer.getName() +
-//        "\nTotal Price = " + totalPrice +
-//        "\nStatus : " +invoiceStatus;
-//    }
+
+    public abstract String toString();
 }

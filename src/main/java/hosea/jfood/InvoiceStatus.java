@@ -1,16 +1,21 @@
 package hosea.jfood;
+
 /**
- * Enumeration class InvoiceStatus - write a description of the enum class here
+ * Class yang digunakan untuk menetapkan invoiceStatus untuk setiap invoice
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author Hosea Yoarana/ NPM: 1706042913
+ * @version 27 Mei 2020
  */
 public enum InvoiceStatus
 {
     ONGOING("Ongoing"), FINISHED("Finished"), CANCELLED("Cancelled");
     
     private String status;
-    
+
+    /**
+     * method yang digunakan untuk menetapkan status dari invoice
+     * @param status
+     */
     private InvoiceStatus(String status)
     {
         this.status = status;

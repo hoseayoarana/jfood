@@ -3,7 +3,7 @@ package hosea.jfood;
  * Class Location berisi province, description, dan city untuk dijadikan sebuah objek dari location
  *
  * @author Hosea Yoarana
- * @version 27-02-2020
+ * @version 27 Feb 2020
  */
 public class Location
 {
@@ -17,7 +17,6 @@ public class Location
      * @param city              kota dari yang akan digunakan class seller
      * @param province          provinsi dari yang akan digunakan class seller
      * @param description       deskripsi singkat yang akan digunakan class seller
-     * @return Nothing.         mengembalikan Nothing
      */
     public Location(String city, String province, String description)
     {

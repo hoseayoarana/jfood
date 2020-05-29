@@ -5,11 +5,12 @@ import java.util.regex.*;
 import java.text.Format;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 /**
- * Class Customer berisi id, nama, email, password, dan joinDate dari customer
+ * Class untuk mengatur, membuat, dan mendefinisikan customer
  *
- * @author Hosea Yoarana
- * @version 27-02-2020
+ * @author Hosea Yoarana/ NPM: 1706042913
+ * @version 27 Mei 2020
  */
 public class Customer
 {
@@ -36,7 +37,14 @@ public class Customer
         setPassword(password);
         this.joinDate = Calendar.getInstance();
     }
-    
+
+    /**
+     * Inisiasi variabel kedalam method public untuk datatype Customer
+     * @param id            id dari customer
+     * @param name          name dari customer
+     * @param email         email dari customer
+     * @param password      password dari customer
+     */
     public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
     {
         this.id = id;
@@ -46,13 +54,21 @@ public class Customer
         //this.joinDate = new GregorianCalendar(year,month,dayOfMonth);
         joinDate = Calendar.getInstance();
     }
-    
+
+    /**
+     * Inisiasi variabel kedalam method public untuk datatype Customer
+     * @param id            id dari customer
+     * @param name          name dari customer
+     * @param email         email dari customer
+     * @param password      password dari customer
+     */
     public Customer(int id, String name, String email, String password)
     {
         this.id = id;
         this.name = name;
         setEmail(email);
         setPassword(password);
+        joinDate = Calendar.getInstance();
     }
     
     /**
@@ -90,7 +106,11 @@ public class Customer
     {
         return password;
     }
-    
+
+    /**
+     * accessor getJoinDate untuk mengambil joinDate
+     * @return joinDate     mengembalikan joinDate
+     */
     public Calendar getJoinDate()
     {
         //SimpleDateFormat sd = new SimpleDateFormat("dd MMMM yyyy");
@@ -117,13 +137,14 @@ public class Customer
     }
     
     /**
-     * mutator setEmail untuk menetapkan email
+     * mutator setEmail untuk menetapkan email.
+     * Digunakan syarat dalam memasukkan email dengan regular expression
+     *
      * @param email     email dari customer
      */
     public void setEmail(String email)
     {
-        if (java.util.regex.Pattern.matches("(([a-zA-Z0-9&\\*_~]+(\\.?))+)[@]((\\w+)([\\.\\-]?))+", email))
-        {
+        if (Pattern.matches("(([a-zA-Z0-9&\\*_~]+(\\.?))+)[@]((\\w+)([\\.\\-]?))+", email)) {
             this.email = email;
         }
         else{
@@ -132,16 +153,17 @@ public class Customer
     }
     
     /**
-     * mutator setPassword untuk menetapkan password
+     * mutator setPassword untuk menetapkan password.
+     * Digunakan syarat dalam memasukkan password dengan regular expression
+     *
      * @param password      password dari customer
      */
     public void setPassword(String password)
     {
-        if (java.util.regex.Pattern.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$", password))
-        {
+        if (Pattern.matches("^(?=.*[A-z])(?=.*[0-9])[A-Za-z\\d]{6,}$", password)) {
             this.password = password;
         }
-        else{
+        else {
             this.password = "";
         }
     }
@@ -154,7 +176,14 @@ public class Customer
     {
         this.joinDate = joinDate;
     }
-    
+
+    /**
+     * mutator setJoinDate untuk menetapkan joinDate dengan simple calendar
+     *
+     * @param year
+     * @param dayOfMonth
+     * @param month
+     */
     public void setJoinDate(int year, int month, int dayOfMonth)
     {
         joinDate.set(java.util.Calendar.YEAR, year);

@@ -3,7 +3,7 @@ package hosea.jfood;
  * Class Food berisi id, name, seller, price, category untuk dijadikan sebuah objek dari Food
  *
  * @author Hosea Yoarana
- * @version 27-02-2020
+ * @version 27 Feb 2020
  */
 public class Food
 {

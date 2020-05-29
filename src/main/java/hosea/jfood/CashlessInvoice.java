@@ -5,91 +5,95 @@ import java.util.regex.*;
 import java.text.Format;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 /**
- * Write a description of class CashlessInvoice here.
+ * Class untuk membuat dan mendefinisikan invoice yang bersifat Cashless
+ * @see Invoice
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Hosea Yoarana/ NPM: 1706042913
+ * @version 27 Mei 2020
  */
 public class CashlessInvoice extends Invoice
 {
-    // instance variables - replace the example below with your own
     private final static PaymentType PAYMENT_TYPE = PaymentType.CASHLESS;
     private Promo promo;
 
     /**
-     * Constructor for objects of class CashlessInvoice
+     * Constructor untuk objek class CashlessInvoice
+     *
+     * @param  id
+     * @param foods
+     * @param customer
+     * @see Invoice
      */
     public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
-        // initialise instance variables
         super(id, foods, customer);
     }
-    
+
+    /**
+     * Constructor untuk objek class CashlessInvoice
+     *
+     * @param  id
+     * @param foods
+     * @param customer
+     * @param promo
+     * @see Invoice
+     */
     public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, Promo promo)
     {
-        // initialise instance variables
         super(id, foods, customer);
         this.promo = promo;
     }
-    
+
     /**
-     * An example of a method - replace this comment with your own
+     * Method accessor untuk mengambil Payment Type dari suatu invoice
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return PAYMENT_TYPE
      */
     public PaymentType getPaymentType()
     {
-        // put your code here
         return PAYMENT_TYPE;
     }
-    
+
+    /**
+     * Method accessor untuk mengambil promo dari suatu invoice
+     *
+     * @return promo
+     */
     public Promo getPromo()
     {
         return promo;
     }
-    
+
+    /**
+     * Method mutator untuk set promo untuk suatu invoice
+     *
+     * @param promo
+     */
     public void setPromo(Promo promo)
     {
         this.promo = promo;
     }
-    
+
+    /**
+     * Method mutator untuk set totalPrice untuk suatu invoice
+     *
+     */
     public void setTotalPrice()
     {
         super.totalPrice=0;
-        for(Food foodList : getFoods())
-        {
+        for(Food foodList : getFoods()) {
             super.totalPrice=super.totalPrice+foodList.getPrice();
         }
-        if (promo != null && getPromo().getActive() == true && super.totalPrice > getPromo().getMinPrice())
-        {
+        if (promo != null && getPromo().getActive() == true && super.totalPrice > getPromo().getMinPrice()) {
             super.totalPrice = super.totalPrice  - promo.getDiscount();
-        }
-
-        else {
+        }else {
             super.totalPrice = super.totalPrice + 0;
         }
         
     }
-    
-    /*
-    public void printData()
-    {
-        System.out.println("============INVOICE============");
-        System.out.println("ID: " +super.getId());
-        System.out.println("Food: " +super.getFoods().getName());
-        System.out.println("Date: " +super.getDate());
-        System.out.println("Customer: " +super.getCustomer().getName());
-        if (promo != null && super.getFood().getPrice() >= promo.getMinPrice() && promo.getActive() == true)
-        {
-            System.out.println("Promo: " +promo.getCode());
-        }
-        System.out.println("Total Price: " +totalPrice);
-        System.out.println("Status: " +super.getInvoiceStatus());
-        System.out.println("Payment Type: " +PaymentType.CASHLESS);
-    }
-    */
+
     public String toString()
     {
         String foods = "";
